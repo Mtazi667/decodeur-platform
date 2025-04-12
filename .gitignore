@@ -1,0 +1,17 @@
+# Node modules
+node_modules/
+
+# Environnement
+.env
+
+# Logs
+logs
+*.log
+
+# Vite / React / Cache
+dist/
+.vite/
+
+# IDE
+.vscode/
+.idea/
