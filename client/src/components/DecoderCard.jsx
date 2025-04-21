@@ -41,8 +41,12 @@ export default function DecoderCard({ address }) {
                 })
             }
 
-            if (['reset', 'shutdown', 'reinit'].includes(action)) {
-                setTimeout(() => sendDecoderAction('info'), 20000)
+            // Refresh après action
+            if (['shutdown', 'reinit'].includes(action)) {
+                setTimeout(() => sendDecoderAction('info'), 1000)
+            }
+            else if (['reset'].includes(action)) {
+                setTimeout(() => sendDecoderAction('info'), 15000)
                 setTimeout(() => sendDecoderAction('info'), 25000)
                 setTimeout(() => sendDecoderAction('info'), 30000)
             }
