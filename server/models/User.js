@@ -23,13 +23,11 @@ const userSchema = new mongoose.Schema({
   decoders: [
     {
       address: String,
-      status: {
-        type: String,
-        enum: ['Authorized', 'Suspended'],
-        default: 'Authorized'
-      }
+      status: { type: String, enum: ['Authorized', 'Suspended'], default: 'Authorized' },
+      channels: { type: [String], default: [] } 
     }
   ]
+
 }, { timestamps: true })
 
 export default mongoose.model('User', userSchema)

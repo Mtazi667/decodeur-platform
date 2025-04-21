@@ -54,6 +54,7 @@ export const login = async (req, res) => {
         if (!isMatch) return res.status(400).json({ message: 'Mot de passe incorrect' })
 
         const token = jwt.sign({ id: user._id, role: user.role }, JWT_SECRET, { expiresIn: '1d' })
+        console.log(`Token: ${token}`)
         res.json({ token, user: { email: user.email, role: user.role } })
     } catch (err) {
         res.status(500).json({ error: err.message })

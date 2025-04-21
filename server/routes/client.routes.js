@@ -2,6 +2,9 @@ import express from 'express'
 import { getAuthorizedDecoders } from '../controllers/client.controller.js'
 import { verifyToken } from '../middlewares/auth.js'
 import User from '../models/User.js'
+import { addChannelToDecoder, removeChannelFromDecoder } from '../controllers/client.controller.js'
+
+
 
 const router = express.Router()
 
@@ -18,5 +21,8 @@ router.get('/decoders', verifyToken, async (req, res) => {
         res.status(500).json({ error: err.message })
     }
 })
+
+router.put('/decoders/:address/channels', verifyToken, addChannelToDecoder)
+router.delete('/decoders/:address/channels', verifyToken, removeChannelFromDecoder)
 
 export default router
